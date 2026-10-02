@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#475841">
+  <meta name="description" content="Petmania: produtos escolhidos com carinho para cuidar de quem faz parte da família.">
+  <title>Petmania — carinho em cada detalhe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <button class="brand" data-view="inicio" aria-label="Petmania, página inicial">
+      <span class="brand-mark" aria-hidden="true"></span><img src="img/logo4.png" alt="Petmania">
+    </button>
+    <button id="menu" class="ib" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav id="nav" aria-label="Navegação principal">
+      <button class="on" data-view="inicio">Início</button>
+      <button data-view="produtos">Produtos</button>
+      <button data-view="sobre">Sobre nós</button>
+    </nav>
+    <div class="head-actions">
+      <button class="ib" id="accountBtn" aria-label="Entrar ou acessar minha conta"><span aria-hidden="true">♙</span><span class="action-label"> Entrar</span></button>
+      <button class="ib" id="cartBtn" aria-label="Abrir carrinho">🛒<span class="badge" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="view on" id="v-inicio" aria-label="Início">
+      <div class="car" aria-label="Destaques da Petmania">
+        <article class="sl on">
+          <div><span class="eyebrow">UM MUNDO DE CARINHO</span><h1>Mais alegria para cada patinha.</h1><p>Produtos escolhidos com cuidado para deixar a vida do seu pet ainda melhor.</p><button class="btn" data-view="produtos">Explorar produtos <span aria-hidden="true">→</span></button></div>
+          <img class="big-img" src="img/pets.jpg" alt="Cães, gatos e coelhos juntos">
+        </article>
+        <article class="sl">
+          <div><span class="eyebrow">HORA DE BRINCAR</span><h1>Pequenos brinquedos, grandes aventuras.</h1><p>Encontre novidades para movimentar o dia e espalhar diversão.</p><button class="btn" data-view="produtos" data-category="Brinquedos">Ver brinquedos <span aria-hidden="true">→</span></button></div>
+          <span class="big" aria-hidden="true">🧶</span>
+        </article>
+        <article class="sl">
+          <div><span class="eyebrow">CUIDADO DE TODO DIA</span><h1>Bem-estar que acompanha seu melhor amigo.</h1><p>Do comedouro à caminha: carinho em cada detalhe da rotina.</p><button class="btn" data-view="produtos" data-category="Acessórios">Encontrar favoritos <span aria-hidden="true">→</span></button></div>
+          <span class="big" aria-hidden="true">🐈</span>
+        </article>
+        <button class="arr prev" aria-label="Slide anterior">‹</button>
+        <button class="arr next" aria-label="Próximo slide">›</button>
+        <div class="dots" aria-label="Selecionar destaque"></div>
+      </div>
+
+      <section class="home-block">
+        <div class="section-heading"><div><span class="eyebrow dark">ESCOLHA POR CATEGORIA</span><h2 class="sec-t">Um carinho para cada momento</h2></div><button class="text-link" data-view="produtos">Ver tudo <span aria-hidden="true">→</span></button></div>
+        <div class="cats">
+          <button class="cat" data-category="Alimentação"><span aria-hidden="true">🥣</span>Alimentação</button>
+          <button class="cat" data-category="Brinquedos"><span aria-hidden="true">🎾</span>Brinquedos</button>
+          <button class="cat" data-category="Acessórios"><span aria-hidden="true">🦴</span>Acessórios</button>
+          <button class="cat" data-category="Conforto"><span aria-hidden="true">🛏️</span>Conforto</button>
+        </div>
+      </section>
+
+      <section class="home-block featured">
+        <div class="section-heading"><div><span class="eyebrow dark">FEITOS PARA AMAR</span><h2 class="sec-t">Queridinhos da Petmania</h2></div><button class="text-link" data-view="produtos">Todos os produtos <span aria-hidden="true">→</span></button></div>
+        <div class="grid" id="featuredGrid"></div>
+      </section>
+
+      <section class="info home-info">
+        <div><span aria-hidden="true">💚</span><b>Escolhas com carinho</b><p>Produtos selecionados para o bem-estar do seu pet.</p></div>
+        <div><span aria-hidden="true">📦</span><b>Entrega por parceiros</b><p>O envio é feito por empresas de logística parceiras. Não temos frota própria.</p></div>
+        <div><span aria-hidden="true">💻</span><b>Uma loja 100% online</b><p>Compre de onde estiver. A Petmania não possui loja física.</p></div>
+      </section>
+    </section>
+
+    <section class="view" id="v-produtos" aria-label="Produtos">
+      <div class="page-title"><span class="eyebrow dark">NOSSA LOJINHA</span><h1>Encontre o próximo favorito</h1><p>Boas escolhas para pets felizes.</p></div>
+      <div class="bar">
+        <label class="searchbox"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Buscar produtos..." aria-label="Buscar produtos"></label>
+        <select id="sortSelect" aria-label="Ordenar produtos">
+          <option value="featured">Em destaque</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="name">Nome A–Z</option>
+        </select>
+      </div>
+      <div class="chips" id="categoryChips" aria-label="Filtrar por categoria"></div>
+      <p id="productCount" class="result-count" aria-live="polite"></p>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <section class="view" id="v-sobre" aria-label="Sobre a Petmania">
+      <div class="about-hero"><span class="about-paw" aria-hidden="true">🐾</span><span class="eyebrow">NOSSA HISTÓRIA</span><h1>Feita por quem acredita que eles são família.</h1><p>A Petmania nasceu para deixar mais simples encontrar bons produtos para quem enche a casa de alegria.</p></div>
+      <div class="about-grid">
+        <article class="box"><span class="about-icon">💚</span><h2>Carinho em cada escolha</h2><p>Reunimos produtos para acompanhar a rotina, o conforto e a diversão do seu pet.</p></article>
+        <article class="box"><span class="about-icon">🛍️</span><h2>Online, do seu jeito</h2><p>Somos uma loja exclusivamente online e não temos loja física. Você compra por aqui, com praticidade.</p></article>
+        <article class="box"><span class="about-icon">📦</span><h2>Envio com parceiros</h2><p>As entregas são realizadas por empresas de logística parceiras. A Petmania não possui frota nem serviço próprio de entrega.</p></article>
+      </div>
+      <div class="about-note"><b>Ficou com alguma dúvida?</b><span>Entre na sua conta para acompanhar seus pedidos ou fale com a gente pelo canal de atendimento informado na confirmação da compra.</span></div>
+    </section>
+
+    <section class="view" id="v-conta" aria-label="Minha conta">
+      <div class="page-title"><span class="eyebrow dark">SEU CANTINHO</span><h1>Minha conta</h1><p id="accountGreeting"></p></div>
+      <div class="box account-summary" id="accountSummary"></div>
+      <div class="section-heading"><div><span class="eyebrow dark">ACOMPANHE POR AQUI</span><h2 class="sec-t">Meus pedidos</h2></div></div>
+      <div id="myOrders"></div>
+      <button class="btn sec" id="logoutBtn">Sair da conta</button>
+    </section>
+mania
+    <section class="view" id="v-admin" aria-label="Painel administrativo">
+      <div class="page-title"><span class="eyebrow dark">ÁREA RESTRITA</span><h1>Painel da Petmania</h1><p>Gerencie o catálogo e acompanhe seus clientes e pedidos.</p></div>
+      <div class="admin-callout">Você está no modo administrador. Alterações deste protótipo ficam salvas apenas neste navegador.</div>
+      <div class="tabs" id="adminTabs">
+        <button class="chip on" data-admin-tab="products">Produtos</button>
+        <button class="chip" data-admin-tab="customers">Clientes</button>
+        <button class="chip" data-admin-tab="orders">Pedidos</button>
+      </div>
+      <section id="admin-products" class="admin-panel">
+        <div class="admin-toolbar"><h2>Catálogo de produtos</h2><button class="btn sm" id="addProductBtn">＋ Novo produto</button></div>
+        <div class="tw"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead><tbody id="adminProductRows"></tbody></table></div>
+      </section>
+      <section id="admin-customers" class="admin-panel" hidden>
+        <div class="admin-toolbar"><h2>Clientes cadastrados</h2><span id="customerCount" class="st"></span></div>
+        <div class="tw"><table><thead><tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>Cadastro</th></tr></thead><tbody id="customerRows"></tbody></table></div>
+      </section>
+      <section id="admin-orders" class="admin-panel" hidden>
+        <div class="admin-toolbar"><h2>Pedidos recebidos</h2></div>
+        <div class="tw"><table><thead><tr><th>Pedido</th><th>Cliente</th><th>Data</th><th>Total</th><th>Status</th><th>Ação</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span aria-hidden="true">🐶</span> petmania</div>
+    <p>Carinho em cada detalhe. Uma loja online, sem loja física.</p>
+    <p>Entregas realizadas por parceiros logísticos. Não temos entrega própria.</p>
+    <small>© <span id="year"></span> Petmania. Feito com amor por pets.</small>
+  </footer>
+
+  <div class="ov" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="md auth-card">
+      <button class="x" data-close="authModal" aria-label="Fechar">×</button>
+      <span class="modal-paw" aria-hidden="true">🐾</span>
+      <h2 id="authTitle">Que bom ter você aqui!</h2>
+      <p class="muted">Entre ou crie sua conta para continuar.</p>
+      <div class="tabs auth-tabs"><button class="chip on" data-auth-tab="login">Entrar</button><button class="chip" data-auth-tab="register">Criar conta</button></div>
+      <form id="loginForm">
+        <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="voce@email.com"></label>
+        <label>Senha<input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Sua senha"></label>
+        <p id="loginError" class="form-error" aria-live="polite"></p>
+        <button class="btn sec full" type="submit">Entrar na minha conta</button>
+      </form>
+      <form id="registerForm" hidden>
+        <label>Seu nome<input name="name" autocomplete="name" required minlength="2" placeholder="Como podemos te chamar?"></label>
+        <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="voce@email.com"></label>
+        <label>Telefone <span class="optional">(opcional)</span><input name="phone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000"></label>
+        <label>Senha<input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Mínimo de 6 caracteres"></label>
+        <p id="registerError" class="form-error" aria-live="polite"></p>
+        <button class="btn sec full" type="submit">Criar minha conta</button>
+      </form>
+      <p class="demo-note">Modo demonstração: administrador <b>admin@petmania.com</b>, senha <b>petmania2026</b>. Os dados ficam neste navegador; para uso real, conecte autenticação segura e banco de dados.</p>
+    </div>
+  </div>
+
+  <div class="ov" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="md">
+      <button class="x" data-close="drawer" aria-label="Fechar carrinho">×</button>
+      <h2 id="cartTitle">Seu carrinho <span aria-hidden="true">🛒</span></h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="tot"><p><span>Subtotal</span><b id="cartSubtotal">R$ 0,00</b></p><small>Frete e prazo são confirmados com a logística parceira. Não temos frota própria.</small><button class="btn sec full" id="checkoutBtn">Continuar para finalizar</button></div>
+    </div>
+  </div>
+
+  <div class="ov" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="md checkout-card">
+      <button class="x" data-close="checkoutModal" aria-label="Fechar">×</button>
+      <span class="eyebrow dark">SÓ MAIS UM PASSO</span><h2 id="checkoutTitle">Finalizar pedido</h2>
+      <p class="muted">O pedido será registrado como demonstração. A entrega é feita por logística parceira — não temos frota própria.</p>
+      <form id="checkoutForm">
+        <label>Nome completo<input name="name" required autocomplete="name"></label>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Endereço para entrega<input name="address" required autocomplete="street-address" placeholder="Rua, número, bairro e cidade"></label>
+        <label>CEP<input name="zip" required inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" pattern="[0-9]{5}-?[0-9]{3}"></label>
+        <div class="checkout-total"><span>Total dos produtos</span><b id="checkoutTotal">R$ 0,00</b></div>
+        <small class="muted">O valor de frete e a previsão de entrega devem ser confirmados com a logística parceira.</small>
+        <p id="checkoutError" class="form-error" aria-live="polite"></p>
+        <button class="btn sec full" type="submit">Confirmar pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="ov" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <div class="md">
+      <button class="x" data-close="productModal" aria-label="Fechar">×</button>
+      <span class="eyebrow dark">CATÁLOGO</span><h2 id="productModalTitle">Novo produto</h2>
+      <form id="productForm">
+        <input type="hidden" name="id">
+        <label>Nome do produto<input name="name" required maxlength="70" placeholder="Ex.: Caminha aconchegante"></label>
+        <label>Descrição<input name="description" required maxlength="150" placeholder="Uma frase sobre o produto"></label>
+        <div class="row">
+          <label>Categoria<select name="category" required><option>Alimentação</option><option>Brinquedos</option><option>Acessórios</option><option>Conforto</option></select></label>
+          <label>Ícone/emoji<input name="emoji" required maxlength="6" value="🐾" aria-label="Emoji do produto"></label>
+        </div>
+        <div class="row">
+          <label>Preço (R$)<input name="price" type="number" required min="0.01" step="0.01"></label>
+          <label>Estoque<input name="stock" type="number" required min="0" step="1"></label>
+        </div>
+        <p id="productError" class="form-error" aria-live="polite"></p>
+        <button class="btn sec full" type="submit">Salvar produto</button>
+      </form>
+    </div>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
